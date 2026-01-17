@@ -1,31 +1,42 @@
 pipeline {
 
     agent any
-
+	   tools {
+			nodejs 'node js'
+			}
    
     stages {
         
-        stage('Build') {
+        stage('Checkout Code') {
             steps {
             
-                git credentialsId: 'git_credential', url: 'https://github.com/beauty-singh-code/end-to-end-project.git'
+                git credentialsId: 'git_credential', url: 'https://github.com/beauty-singh-code/simple-nodejs-app.git'
                 
             }
         }
 
        
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
-                echo '"Building the application..."'
-               
+                // Execute npm install within the workspace.
+                sh 'npm install'
             }
         }
 
-        
-        stage('Deploy') {
+       stage('Build') {
             steps {
-                echo '"Building the application..."'
+                // Execute a build command, e.g., for a React or Node.js project.
+                sh 'npm run build'
             }
         }
+		
+		stage('Test') {
+            steps {
+                // Execute tests.
+                sh 'npm test'
+            }
+        }
+		
+		
     }
 }
