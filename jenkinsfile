@@ -15,17 +15,9 @@ pipeline {
             }
         }
 
-       
-        stage('Install Dependencies') {
+       stage('Build') { 
             steps {
-                // Execute npm install within the workspace.
-                sh 'npm install'
-            }
-        }
-
-       stage('Build') {
-            steps {
-              sh 'CI=false npm run build'
+                sh 'npm install' 
             }
         }
 		
