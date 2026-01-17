@@ -25,7 +25,4 @@
     "request": "^2.88.2",
     "wiki-infobox-parser": "^0.1.11"
   }
-
-  "test": "echo \"Error: no test specified\" && exit 1"
-
 }
